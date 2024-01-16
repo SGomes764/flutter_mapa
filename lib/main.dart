@@ -23,7 +23,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.green.shade400,
         centerTitle: true,
         title: const Text(
           'Home Page',
@@ -37,22 +37,23 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        color: Colors.green.shade400,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            // BOTÃO MAPA
             IconButton(
-              icon: const Icon(Icons.map),
+              icon: const Icon(Icons.map, color: Colors.black, size: 30,),
               onPressed: () {
-                // Substituir a tela atual pela Map Page
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MapPage()),
                 );
               },
             ),
+            // BOTÃO PESQUISAR
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search, color: Colors.black, size: 30,),
               onPressed: () {
                 // Substituir a tela atual pela Search Page
                 Navigator.push(
@@ -61,8 +62,9 @@ class MyHomePage extends StatelessWidget {
                 );
               },
             ),
+            // BOTÃO PERFIL
             IconButton(
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person, color: Colors.black, size: 30,),
               onPressed: () {
                 // Substituir a tela atual pela Profile Page
                 Navigator.push(
