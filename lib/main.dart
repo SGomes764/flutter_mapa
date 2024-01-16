@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Mapa',
+      title: 'Projeto Mapas',
       home: MyHomePage(),
     );
   }
@@ -21,8 +21,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Home Page'),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: const Text(
+          'Home Page',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+        ),
       ),
       body: const Center(
         child: Text(
@@ -31,28 +37,38 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
               icon: const Icon(Icons.map),
               onPressed: () {
-                // navegar para a Map Page
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage()));
+                // Substituir a tela atual pela Map Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapPage()),
+                );
               },
             ),
             IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
-                // navegar para a Search Page
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+                // Substituir a tela atual pela Search Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchPage()),
+                );
               },
             ),
             IconButton(
               icon: Icon(Icons.person),
               onPressed: () {
-                // navegar para a Profile Page
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                // Substituir a tela atual pela Profile Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
               },
             ),
           ],
@@ -61,4 +77,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-

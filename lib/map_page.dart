@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -9,24 +11,29 @@ class MapPage extends StatefulWidget {
 
 class _MapPage extends State<MapPage> {
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     super.didChangeDependencies();
     print('MAP PAGE EXIBIDA');
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Map Page'),
-      ),
-      body: Center(
-        child: Text(
-          'Conteúdo da Map Page',
-          style: TextStyle(
-            fontSize: 20.0,
+      body: Stack(
+        children: [
+          FlutterMap(
+            options: MapOptions(
+              initialCenter: LatLng (39.7208299,-8.8043307),
+              initialZoom: 7.2,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                userAgentPackageName: "com.example.app",
+              ),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }

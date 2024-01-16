@@ -14,14 +14,15 @@ class _ProfilePageState extends State<ProfilePage> {
   List<Map<String, dynamic>> usersData = [];
 
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     super.didChangeDependencies();
     print('PROFILE PAGE EXIBIDA');
     fetchData();
   }
 
   Future<void> fetchData() async {
-    final response = await http.get(Uri.parse('https://raw.githubusercontent.com/SGomes764/database/main/flutter_mapa/data.json')); // repositorio GitHub publico
+    final response = await http.get(Uri.parse(
+        'https://raw.githubusercontent.com/SGomes764/database/main/flutter_mapa/data.json'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
@@ -34,35 +35,47 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            for (final user in usersData)
-              Column(
-                children: [
-                  CircleAvatar(
-                  radius: 95.0,
-                  backgroundImage: CachedNetworkImageProvider(user["img"]),
-              ),
-              SizedBox(height: 100.0,),
-              Text(
-                'Nome: ${user["nome"]}\nSobrenome: ${user["sobrenome"]}\nUser: ${user["user"]}\nEmail: ${user["email"]}\nID: ${user["id"]}',
-                style: const TextStyle(
-                  fontSize: 20.0,
-                  ),
-                ),
-              ],
+  Widget build(BuildContext context) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: const Text(
+            'Profile Page',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30.0,
             ),
-          ],
+          ),
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (final user in usersData)
+                Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 95.0,
+                      backgroundImage: CachedNetworkImageProvider(user["img"]),
+                      backgroundColor: Colors.white,
+                    ),
+                    SizedBox(
+                      height: 100.0,
+                    ),
+                    Text(
+                      'Nome: ${user["nome"]}\nSobrenome: ${user["sobrenome"]}\nUser: ${user["user"]}\nEmail: ${user["email"]}\nID: ${user["id"]}',
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  ],
+                ),
+            ],
+          ),
+        ),
+      );
   }
 }
-
